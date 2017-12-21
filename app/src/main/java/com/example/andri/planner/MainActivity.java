@@ -1,5 +1,6 @@
 package com.example.andri.planner;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -39,9 +40,13 @@ public class MainActivity extends AppCompatActivity {
         buttonTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                /***SQLiteDatabase db = dbHelper.getWritableDatabase();
                 db.execSQL("insert into agenda (id,judul,tempat,deskripsi,kategori) values(1,'berangkat kerja','uin sunan kalijaga','harus pagi','Agenda Kerja')");
                 Toast.makeText(getApplicationContext(), "Berhasil", Toast.LENGTH_LONG).show();
+                 */
+                Intent tambahagenda = new Intent(MainActivity.this, TambahAgenda.class);
+                startActivity(tambahagenda);
+
             }
         });
 
