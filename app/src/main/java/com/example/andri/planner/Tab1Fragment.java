@@ -1,15 +1,24 @@
 package com.example.andri.planner;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.andri.planner.agenda.Agenda;
 import com.example.andri.planner.agenda.AgendaKerja;
@@ -22,14 +31,18 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Tab1Fragment extends Fragment {
+public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private RecyclerView rvView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<String> dataSet;
-    DataHelper dbcenter;
-    protected Cursor cursor;
+
     String[] daftar;
+    RecyclerView recyclerView;
+    Menu menu;
+    protected Cursor cursor;
+    DataHelper dbcenter;
+    public static Tab1Fragment ma;
 
 
     public Tab1Fragment() {
@@ -41,7 +54,7 @@ public class Tab1Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_tab1, container,  false);
+        View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
 
         dataSet = new ArrayList<>();
         initDataset();
@@ -66,15 +79,17 @@ public class Tab1Fragment extends Fragment {
 
 
     }
-    private void initDataset(){
+
+    public void initDataset() {
         dbcenter = new DataHelper(getActivity());
         SQLiteDatabase db = dbcenter.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM agenda",null);
+        cursor = db.rawQuery("SELECT * FROM agenda", null);
         daftar = new String[cursor.getCount()];
         cursor.moveToFirst();
-        for (int cc=0; cc < cursor.getCount(); cc++){
+
+        for (int cc = 0; cc < cursor.getCount(); cc++) {
             cursor.moveToPosition(cc);
-            dataSet.add(cursor.getString(1).toString());
+            dataSet.add(cursor.getString(2).toString());
         }
 
         /**
@@ -83,15 +98,29 @@ public class Tab1Fragment extends Fragment {
          * tidak hanya String seperti di kasus ini
          */
         /**dataSet.add("Karin");
-        dataSet.add("Ingrid");
-        dataSet.add("Helga");
-        dataSet.add("Renate");
-        dataSet.add("Elke");
-        dataSet.add("Ursula");
-        dataSet.add("Erika");
-        dataSet.add("Christa");
-        dataSet.add("Gisela");
-        dataSet.add("Monika");*/
+         dataSet.add("Ingrid");
+         dataSet.add("Helga");
+         dataSet.add("Renate");
+         dataSet.add("Elke");
+         dataSet.add("Ursula");
+         dataSet.add("Erika");
+         dataSet.add("Christa");
+         dataSet.add("Gisela");
+         dataSet.add("Monika");*/
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 

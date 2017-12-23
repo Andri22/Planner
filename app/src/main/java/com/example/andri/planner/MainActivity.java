@@ -1,7 +1,7 @@
 package com.example.andri.planner;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,21 +11,32 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import com.example.andri.planner.db.DataHelper;
 import com.example.andri.planner.fragment.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    String[] daftar;
+    ListView ListView01;
+    Menu menu;
+    protected Cursor cursor;
+
+    public static MainActivity ma;
+
     DataHelper dbHelper;
+
+    DataHelper SQLite = new DataHelper(MainActivity.this);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbHelper = new DataHelper(this);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -92,5 +105,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
 }

@@ -336,10 +336,6 @@
         "source": "/home/andri/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/d01924850ad6c826735198354d0510be/res/drawable-hdpi-v4/design_ic_visibility_off.png"
     },
     {
-        "merged": "/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/res/merged/androidTest/debug/color-v21_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "/home/andri/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/90d9c1a3bf3d1dfebe1622dc7f690b85/res/color-v21/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
         "merged": "/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/res/merged/androidTest/debug/anim_design_snackbar_in.xml.flat",
         "source": "/home/andri/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/d01924850ad6c826735198354d0510be/res/anim/design_snackbar_in.xml"
     },

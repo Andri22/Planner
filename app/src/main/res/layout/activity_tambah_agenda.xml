@@ -153,6 +153,7 @@
                 android:src="@drawable/ic_location_on_black_24dp" />
 
             <EditText
+                android:id="@+id/edit_lokasi"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
@@ -172,12 +173,14 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_weight="1"
                 android:text="BATAL"/>
 
             <Button
+                android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_weight="1"

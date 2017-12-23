@@ -4,26 +4,38 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.andri.planner.db.DataHelper;
+import com.example.andri.planner.model.Data;
+
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class TambahAgenda extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TambahAgenda extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     protected static TextView displayCurrentTime;
     protected static TextView displayCurrentTime1;
     private DatePicker datePicker;
@@ -31,6 +43,19 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
     private TextView dateView;
     private TextView dateView1;
     private int year, month, day;
+    Button btnSave, btnCancel;
+
+    DataHelper sqLiteHelper = new DataHelper(this);
+
+
+    protected Cursor cursor;
+    DataHelper DataHelper;
+
+    EditText edtTitle, edtLokasi, edtNo;
+
+    Button btnTmAwal, btnTmAkhir;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +66,50 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
         getSupportActionBar().setTitle("Tambah Agenda");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+        edtTitle = findViewById(R.id.edit_title);
+        edtLokasi = findViewById(R.id.edit_lokasi);
+
+        btnTmAwal = findViewById(R.id.select_time);
+        btnTmAkhir = findViewById(R.id.select_time1);
+
+
+
+
+        btnSave = findViewById(R.id.btn_save);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                String judul = edtTitle.getText().toString();
+                String lokasi = edtLokasi.getText().toString();
+                String time_1 = displayCurrentTime.getText().toString();
+
+                ((Button) arg0).getText().toString();
+
+                System.out.println("judul : " + judul + " lokasi : "
+                        + lokasi +"awal : "+ time_1 );
+
+                sqLiteHelper.tambah_biodata(judul, lokasi);
+                        /* restart acrtivity */
+                finish();
+
+                Intent tambahagenda = new Intent(TambahAgenda.this, MainActivity.class);
+                startActivity(tambahagenda);
+
+            }
+        });
+
+        btnCancel = findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
 
         //Date
 
@@ -112,10 +181,13 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId()==android.R.id.home){
             finish();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -232,4 +304,14 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+
+
+
 }
