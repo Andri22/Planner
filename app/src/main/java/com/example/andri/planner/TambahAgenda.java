@@ -84,18 +84,18 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
                 String judul = edtTitle.getText().toString();
                 String lokasi = edtLokasi.getText().toString();
-                String time_1 = displayCurrentTime.getText().toString();
+                String waktu_mulai = dateView.getText().toString()+" "+ displayCurrentTime.getText().toString().replace(" ","");
+                String waktu_selesai = dateView1.getText().toString()+" " +displayCurrentTime1.getText().toString().replace(" ","");
 
                 ((Button) arg0).getText().toString();
 
-                System.out.println("judul : " + judul + " lokasi : "
-                        + lokasi +"awal : "+ time_1 );
+                System.out.println(waktu_mulai+" "+waktu_selesai);
 
-                sqLiteHelper.tambah_biodata(judul, lokasi);
+                sqLiteHelper.tambah_biodata(judul, lokasi, waktu_mulai, waktu_selesai);
                         /* restart acrtivity */
                 finish();
 
-                Intent tambahagenda = new Intent(TambahAgenda.this, MainActivity.class);
+                Intent tambahagenda = new Intent(TambahAgenda.this,MainActivity.class);
                 startActivity(tambahagenda);
 
             }

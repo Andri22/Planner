@@ -5,14 +5,21 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/tv_item"
+    android:padding="16dp"
     android:background="@drawable/custom_bg">
-
-        <ImageView
-            android:id="@+id/icon"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/tv_jam"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:contentDescription="TODO"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="wrap_content"
+            android:text="10.00"
+            android:textSize="40sp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,35 +48,5 @@
             android:textColor="@android:color/black"
             android:textSize="12sp" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="8dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/jam_mulai"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="00.00"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/jam_selesai"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:text="00.00"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-    </LinearLayout>
-
 
 </LinearLayout>

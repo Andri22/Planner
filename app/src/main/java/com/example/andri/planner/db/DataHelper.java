@@ -5,11 +5,16 @@ package com.example.andri.planner.db;
  */
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import android.content.ContentValues;
+
+import com.example.andri.planner.agenda.AgendaKerja;
+
+import java.util.ArrayList;
 
 /**
  * Created by Kuncoro on 22/12/2016.
@@ -26,10 +31,10 @@ public class DataHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        String sql = "create table agenda(id int auto_increment, judul text null, lokasi text null, time1 DATETIME DEFAULT CURRENT_TIME null);";
+        String sql = "create table agenda(id int auto_increment, judul text null, lokasi text null, mulai DATETIME null, selesai DATETIME null);";
         Log.d("Data", "onCreate: " + sql);
         db.execSQL(sql);
-        sql = "INSERT INTO agenda (id, judul, lokasi, time1) VALUES ('1','Makan','Indramayu','21:00');";
+        sql = "INSERT INTO agenda (id, judul, lokasi, mulai, selesai) VALUES ('1','Makan','Indramayu','10/02/1997 21:00','10/02/1997 24:00');";
         db.execSQL(sql);
     }
     @Override
@@ -37,11 +42,13 @@ public class DataHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
     }
 
-    public void tambah_biodata(String judul, String lokasi) {
+    public void tambah_biodata(String judul, String lokasi, String Waktu_mulai, String Waktu_selesai) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("judul", judul);
         values.put("lokasi", lokasi);
+        values.put("mulai", Waktu_mulai);
+        values.put("selesai", Waktu_selesai);
         database.insert("agenda", null, values);
         database.close();
     }

@@ -35,7 +35,7 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
     private RecyclerView rvView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<String> dataSet;
+    private ArrayList<AgendaKerja> dataSet;
 
     String[] daftar;
     RecyclerView recyclerView;
@@ -56,6 +56,7 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
 
+        //dbcenter.get_agenda();
         dataSet = new ArrayList<>();
         initDataset();
 
@@ -73,8 +74,6 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
         adapter = new RecyclerViewAdapter(dataSet);
         rvView.setAdapter(adapter);
 
-        Agenda a = new AgendaKerja("dsdssd");
-
         return rootView;
 
 
@@ -89,7 +88,12 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
 
         for (int cc = 0; cc < cursor.getCount(); cc++) {
             cursor.moveToPosition(cc);
-            dataSet.add(cursor.getString(2).toString());
+            dataSet.add(new AgendaKerja(
+                    cursor.getString(1).toString(),
+                    cursor.getString(2).toString(),
+                    cursor.getString(3).toString(),
+                    cursor.getString(4).toString()
+            ));
         }
 
         /**

@@ -4,41 +4,67 @@ package com.example.andri.planner.agenda;
  * Created by andri on 20/12/17.
  */
 
-public class AgendaKerja extends Agenda {
+public class AgendaKerja{
 
-    String judul;
-    String tanggal;
-    String jamMulai;
-    String jamSelesai;
-    String tempat;
-    String deskripsi;
+    private String judul;
+    private String tanggal;
+    private String jamMulai;
+    private String jamSelesai;
+    private String tempat;
+    private String deskripsi;
 
-    public AgendaKerja(String judul){
+    public AgendaKerja(String judul,String tempat, String jamMulai, String jamSelesai){
+        this.judul=judul;
+        this.jamMulai=jamMulai;
+        this.jamSelesai=jamSelesai;
+        this.tempat=tempat;
+    }
+
+    public String getJudul() {
+        return judul;
+    }
+
+    public void setJudul(String judul) {
         this.judul = judul;
     }
 
-    @Override
-    public void tambahAgenda(){
-
+    public String getTanggal() {
+        return tanggal;
     }
 
-    @Override
-    public void hapusAgenda() {
-
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
-    @Override
-    public void updateAgenda() {
-
+    public String getJamMulai() {
+        return jamMulai;
     }
 
-    @Override
-    public void startAlarm() {
-
+    public void setJamMulai(String jamMulai) {
+        this.jamMulai = jamMulai;
     }
 
-    @Override
-    public void stopAlarm() {
+    public String getJamSelesai() {
+        return jamSelesai;
+    }
 
+    public void setJamSelesai(String jamSelesai) {
+        this.jamSelesai = jamSelesai;
+    }
+
+    public String getTempat() {
+        return tempat;
+    }
+
+    public void setTempat(String tempat) {
+        this.tempat = tempat;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 }

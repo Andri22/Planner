@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.andri.planner.R;
+import com.example.andri.planner.agenda.AgendaKerja;
 
 import java.util.ArrayList;
 
@@ -17,9 +18,9 @@ import java.util.ArrayList;
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private ArrayList<String> rvData;
+    private ArrayList<AgendaKerja> rvData;
 
-    public RecyclerViewAdapter(ArrayList<String> inputData) {
+    public RecyclerViewAdapter(ArrayList<AgendaKerja> inputData) {
         rvData = inputData;
     }
 
@@ -28,6 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // di tutorial ini kita hanya menggunakan data String untuk tiap item
         public TextView tvTitle;
         public TextView tvSubtitle;
+        public TextView tvJam;
         public LinearLayout tvButton;
 
         public ViewHolder(View v) {
@@ -35,6 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tvTitle =  v.findViewById(R.id.tv_title);
             tvSubtitle =  v.findViewById(R.id.tv_subtitle);
             tvButton = v.findViewById(R.id.tv_item);
+            tvJam =v.findViewById(R.id.tv_jam);
         }
     }
 
@@ -52,13 +55,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - mengambil elemen dari dataset (ArrayList) pada posisi tertentu
         // - mengeset isi view dengan elemen dari dataset tersebut
-        final String name = rvData.get(position);
-        holder.tvTitle.setText(rvData.get(position));
-        holder.tvSubtitle.setText("Frau " + position);
+
+        final AgendaKerja agenda = rvData.get(position);
+
+        holder.tvTitle.setText(agenda.getJudul());
+        holder.tvSubtitle.setText(agenda.getTempat());
+        holder.tvJam.setText(agenda.getJamMulai().split(" ")[1]);
         holder.tvButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("data ke " + rvData.get(position));
+                String[] a=agenda.getJamMulai().split(" ");
+                for(int q=0;q<a.length;q++) {
+                    System.out.println(a[q]);
+                }
             }
         });
 
