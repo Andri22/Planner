@@ -1,4 +1,4 @@
-#Sun Dec 24 10:11:48 WIB 2017
-base.0=/home/umam/Desktop/Planner/app/build/intermediates/transforms/dexMerger/debug/11
+#Sun Dec 24 22:57:14 WIB 2017
+base.0=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/10
 path.0=classes.dex
 renamed.0=classes.dex

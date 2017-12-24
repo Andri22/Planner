@@ -1,14 +1,20 @@
 package com.example.andri.planner.recycleView;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.andri.planner.MainActivity;
 import com.example.andri.planner.R;
+import com.example.andri.planner.TambahAgenda;
 import com.example.andri.planner.agenda.AgendaKerja;
 
 import java.util.ArrayList;
@@ -34,10 +40,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public ViewHolder(View v) {
             super(v);
-            tvTitle =  v.findViewById(R.id.tv_title);
-            tvSubtitle =  v.findViewById(R.id.tv_subtitle);
+            tvTitle = v.findViewById(R.id.tv_title);
+            tvSubtitle = v.findViewById(R.id.tv_subtitle);
             tvButton = v.findViewById(R.id.tv_item);
-            tvJam =v.findViewById(R.id.tv_jam);
+            tvJam = v.findViewById(R.id.tv_jam);
+
         }
     }
 
@@ -61,13 +68,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.tvTitle.setText(agenda.getJudul());
         holder.tvSubtitle.setText(agenda.getTempat());
         holder.tvJam.setText(agenda.getJamMulai().split(" ")[1]);
+
         holder.tvButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] a=agenda.getJamMulai().split(" ");
-                for(int q=0;q<a.length;q++) {
+                String[] a = agenda.getJamMulai().split(" ");
+
+                for (int q = 0; q < a.length; q++) {
+
                     System.out.println(a[q]);
                 }
+
+
             }
         });
 

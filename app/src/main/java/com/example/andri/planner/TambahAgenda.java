@@ -1,13 +1,21 @@
 package com.example.andri.planner;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +37,7 @@ import android.widget.Toast;
 
 import com.example.andri.planner.db.DataHelper;
 import com.example.andri.planner.model.Data;
+import com.example.andri.planner.agenda.AgendaKerja;
 
 
 import java.util.ArrayList;
@@ -79,8 +88,11 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
         btnSave = findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View arg0) {
+
+                scheduleNotification(getNotification("indramayu"), 5000);
 
                 String judul = edtTitle.getText().toString();
                 String lokasi = edtLokasi.getText().toString();
@@ -312,6 +324,27 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    private void scheduleNotification(Notification notification, int delay) {
 
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private Notification getNotification(String content) {
+        Notification.Builder builder = new Notification.Builder(this);
+        builder.setContentTitle("MAM IKI DIDANDANI :v");
+        builder.setContentText(content);
+        Notification.Builder builder1 = builder.setSmallIcon(R.drawable.ic_launcher_background);
+        return builder.build();
+    }
 
 }

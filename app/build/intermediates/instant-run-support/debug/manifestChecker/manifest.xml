@@ -26,6 +26,8 @@
         </activity>
         <activity android:name="com.example.andri.planner.TambahAgenda" />
 
+        <receiver android:name="com.example.andri.planner.NotificationPublisher" />
+
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />

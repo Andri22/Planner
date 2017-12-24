@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
+ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
 MERGED from [com.android.support:design:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/d01924850ad6c826735198354d0510be/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6901084d1c31f33d1bafb1155d8b622/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:transition:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/6e0943f2be24def5d67357da2f78a2a9/AndroidManifest.xml:17:1-28:12
@@ -20,25 +20,25 @@ MERGED from [com.android.support:support-core-utils:26.1.0] /home/andri/.gradle/
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/1f88ceccb98ccf94ee6378d2e539b65f/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/ab45a23dbc48f5f476c5ed3c94a065a1/AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/andri/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1d5e1a278e2ee7a4ac15d54768b5957c/AndroidManifest.xml:17:1-30:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
-INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
 	package
 		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
-		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
+		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
-		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-22:12
+		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:1-23:12
 		INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:5:5-20:19
+ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:5:5-21:19
 MERGED from [com.android.support:design:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/d01924850ad6c826735198354d0510be/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/d01924850ad6c826735198354d0510be/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/andri/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6901084d1c31f33d1bafb1155d8b622/AndroidManifest.xml:25:5-29:19
@@ -101,6 +101,10 @@ activity#com.example.andri.planner.TambahAgenda
 ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:19:9-59
 	android:name
 		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:19:19-47
+receiver#com.example.andri.planner.NotificationPublisher
+ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:20:9-59
+	android:name
+		ADDED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml:20:19-56
 uses-sdk
 INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/andri/AndroidStudioProjects/Planner/app/src/main/AndroidManifest.xml

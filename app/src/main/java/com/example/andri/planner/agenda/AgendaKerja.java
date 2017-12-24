@@ -4,7 +4,7 @@ package com.example.andri.planner.agenda;
  * Created by andri on 20/12/17.
  */
 
-public class AgendaKerja{
+public class AgendaKerja {
 
     private String judul;
     private String tanggal;
@@ -13,14 +13,14 @@ public class AgendaKerja{
     private String tempat;
     private String deskripsi;
 
-    public AgendaKerja(String judul,String tempat, String jamMulai, String jamSelesai){
-        this.judul=judul;
-        this.jamMulai=jamMulai;
-        this.jamSelesai=jamSelesai;
-        this.tempat=tempat;
+    public AgendaKerja(String judul, String tempat, String jamMulai, String jamSelesai) {
+        this.judul = judul;
+        this.jamMulai = jamMulai;
+        this.jamSelesai = jamSelesai;
+        this.tempat = tempat;
     }
 
-    public String getJudul() {
+    public  String getJudul() {
         return judul;
     }
 
@@ -68,3 +68,5 @@ public class AgendaKerja{
         this.deskripsi = deskripsi;
     }
 }
+
+
