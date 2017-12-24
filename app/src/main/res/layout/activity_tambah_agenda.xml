@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="10dip"
-            android:text="Category:" />
+            android:text="Categorys:" />
 
         <Spinner
             android:id="@+id/spinner"
