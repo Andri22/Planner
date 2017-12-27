@@ -1,6 +1,6 @@
 #Internal package file, do not edit.
-#Sun Dec 24 22:57:16 WIB 2017
-2.base=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/14
+#Wed Dec 27 15:41:32 WIB 2017
+2.base=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/17
 5.set=DEX
 0.path=classes.dex
 2.baseType=DIRECTORY
@@ -22,6 +22,6 @@ count=6
 0.base=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/13
 0.baseType=DIRECTORY
 3.set=DEX
-1.base=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/11
+1.base=/home/andri/AndroidStudioProjects/Planner/app/build/intermediates/transforms/dexMerger/debug/14
 4.baseType=DIRECTORY
 0.set=DEX

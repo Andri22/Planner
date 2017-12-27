@@ -5,16 +5,14 @@ package com.example.andri.planner.db;
  */
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import android.content.ContentValues;
 
+import com.example.andri.planner.agenda.AgendaAkademik;
 import com.example.andri.planner.agenda.AgendaKerja;
-
-import java.util.ArrayList;
 
 /**
  * Created by Kuncoro on 22/12/2016.
@@ -31,10 +29,26 @@ public class DataHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        String sql = "create table agenda(id int auto_increment, judul text null, lokasi text null, mulai DATETIME null, selesai DATETIME null);";
+        String sql = "create table agenda(" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " judul text null," +
+                " lokasi text null," +
+                " mulai DATETIME null," +
+                " selesai DATETIME null," +
+                " deskripsi text null," +
+                " ruang text null," +
+                " Kegiatan text null," +
+                " level text null," +
+                " estimasiBiaya text null," +
+                " kendaraan text null," +
+                " perlengkapan text null," +
+                " kategori text null" +
+                ");";
         Log.d("Data", "onCreate: " + sql);
         db.execSQL(sql);
-        sql = "INSERT INTO agenda (id, judul, lokasi, mulai, selesai) VALUES ('1','Makan','Indramayu','10/02/1997 21:00','10/02/1997 24:00');";
+        sql = "INSERT INTO agenda(id, judul, lokasi, mulai,selesai,deskripsi, ruang, kategori) VALUES ('1','makan','uin','10/12/2007 21:10','10/12/2007 21:10','makan','102','akademik');";
+        db.execSQL(sql);
+        sql = "INSERT INTO agenda(id, judul, lokasi, mulai,selesai,deskripsi, kegiatan, kategori) VALUES ('2','makan anjing','uin','12/12/2007 21:10','12/12/2007 21:10','makan','mandi','keluarga');";
         db.execSQL(sql);
     }
     @Override
@@ -42,22 +56,19 @@ public class DataHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
     }
 
-    public void tambah_biodata(String judul, String lokasi, String Waktu_mulai, String Waktu_selesai) {
+    public void tambah_biodata(ContentValues values) {
         SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("judul", judul);
-        values.put("lokasi", lokasi);
-        values.put("mulai", Waktu_mulai);
-        values.put("selesai", Waktu_selesai);
         database.insert("agenda", null, values);
         database.close();
     }
 
-    public int update_biodata(int id, String judul, String lokasi) {
+    public int update_biodata(String id, String judul, String lokasi, String Waktu_mulai, String Waktu_selesai) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues recordBiodata = new ContentValues();
         recordBiodata.put("judul", judul);
         recordBiodata.put("lokasi", lokasi);
+        recordBiodata.put("mulai", Waktu_mulai);
+        recordBiodata.put("selesai", Waktu_selesai);
         return database.update("agenda", recordBiodata, "id=" + id, null);
     }
 

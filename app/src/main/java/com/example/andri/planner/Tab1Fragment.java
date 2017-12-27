@@ -1,13 +1,10 @@
 package com.example.andri.planner;
 
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,13 +12,13 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.andri.planner.agenda.Agenda;
+import com.example.andri.planner.agenda.AgendaAkademik;
+import com.example.andri.planner.agenda.AgendaKeluarga;
 import com.example.andri.planner.agenda.AgendaKerja;
+import com.example.andri.planner.agenda.AgendaLiburan;
+import com.example.andri.planner.agenda.AgendaPribadi;
 import com.example.andri.planner.db.DataHelper;
 import com.example.andri.planner.recycleView.RecyclerViewAdapter;
 
@@ -35,7 +32,13 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
     private RecyclerView rvView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<AgendaKerja> dataSet;
+    private ArrayList<Agenda> dataSet;
+    //private ArrayList<AgendaAkademik> dataSet1;
+    //private ArrayList<AgendaKeluarga> dataSet2;
+    //private ArrayList<AgendaKerja> dataSet3;
+    //private ArrayList<AgendaLiburan> dataSet4;
+    //private ArrayList<AgendaPribadi> dataSet5;
+
 
     String[] daftar;
     RecyclerView recyclerView;
@@ -57,6 +60,11 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
         View rootView = inflater.inflate(R.layout.fragment_tab1, container, false);
 
         //dbcenter.get_agenda();
+        //dataSet1 = new ArrayList<>();
+        //dataSet2 = new ArrayList<>();
+        //dataSet3 = new ArrayList<>();
+        //dataSet4 = new ArrayList<>();
+        //dataSet5 = new ArrayList<>();
         dataSet = new ArrayList<>();
         initDataset();
 
@@ -88,12 +96,72 @@ public class Tab1Fragment extends Fragment implements AdapterView.OnItemSelected
 
         for (int cc = 0; cc < cursor.getCount(); cc++) {
             cursor.moveToPosition(cc);
-            dataSet.add(new AgendaKerja(
-                    cursor.getString(1).toString(),
-                    cursor.getString(2).toString(),
-                    cursor.getString(3).toString(),
-                    cursor.getString(4).toString()
-            ));
+            System.out.println(cursor.getString(12).toString());
+            if (cursor.getString(12).toString().equals("akademik")) {
+                dataSet.add(new AgendaAkademik(
+                        cursor.getString(0).toString(), //id
+                        cursor.getString(1).toString(), //judul
+                        cursor.getString(2).toString(), //tempat
+                        cursor.getString(3).toString(), //mulai
+                        cursor.getString(4).toString(), //selsei
+                        cursor.getString(5).toString(), //deskripsi
+                        cursor.getString(12).toString(),
+                        cursor.getString(6).toString() //ruang
+
+                ));
+            }
+            else if (cursor.getString(12).toString().equals("keluarga")) {
+                dataSet.add(new AgendaKeluarga(
+                        cursor.getString(0).toString(),
+                        cursor.getString(1).toString(),
+                        cursor.getString(2).toString(),
+                        cursor.getString(3).toString(),
+                        cursor.getString(4).toString(),
+                        cursor.getString(5).toString(),
+                        cursor.getString(12).toString(),
+                        cursor.getString(7).toString() //kegiatan
+
+                ));
+            }
+            else if (cursor.getString(12).toString().equals("kerja")) {
+                dataSet.add(new AgendaKerja(
+                        cursor.getString(0).toString(),
+                        cursor.getString(1).toString(),
+                        cursor.getString(2).toString(),
+                        cursor.getString(3).toString(),
+                        cursor.getString(4).toString(),
+                        cursor.getString(5).toString(),
+                        cursor.getString(12).toString(),
+                        cursor.getString(6).toString(),
+                        cursor.getString(8).toString() //level
+                ));
+            }
+            else if (cursor.getString(12).toString().equals("liburan")) {
+                dataSet.add(new AgendaLiburan(
+                        cursor.getString(0).toString(),
+                        cursor.getString(1).toString(),
+                        cursor.getString(2).toString(),
+                        cursor.getString(3).toString(),
+                        cursor.getString(4).toString(),
+                        cursor.getString(5).toString(),
+                        cursor.getString(12).toString(),
+                        cursor.getString(9).toString(),
+                        cursor.getString(10).toString(),
+                        cursor.getString(11).toString()
+                ));
+            }
+            else if (cursor.getString(12).toString() .equals("pribadi")) {
+                dataSet.add(new AgendaPribadi(
+                        cursor.getString(0).toString(),
+                        cursor.getString(1).toString(),
+                        cursor.getString(2).toString(),
+                        cursor.getString(3).toString(),
+                        cursor.getString(4).toString(),
+                        cursor.getString(5).toString(),
+                        cursor.getString(12).toString(),
+                        cursor.getString(7).toString()
+                ));
+            }
         }
 
         /**

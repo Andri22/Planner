@@ -8,20 +8,17 @@ import android.app.DialogFragment;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,12 +29,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.andri.planner.agenda.AgendaAkademik;
 import com.example.andri.planner.db.DataHelper;
-import com.example.andri.planner.model.Data;
-import com.example.andri.planner.agenda.AgendaKerja;
 
 
 import java.util.ArrayList;
@@ -64,6 +59,10 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
     Button btnTmAwal, btnTmAkhir;
 
+    String Kategori;
+
+    LinearLayout akademik;
+
 
 
     @Override
@@ -82,6 +81,10 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
         btnTmAwal = findViewById(R.id.select_time);
         btnTmAkhir = findViewById(R.id.select_time1);
+        akademik = findViewById(R.id.akademik);
+
+        akademik.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -91,24 +94,25 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View arg0) {
+                if (Kategori=="Akademik") {
 
-                scheduleNotification(getNotification("indramayu"), 5000);
+                    scheduleNotification(getNotification("indramayu"), 5000);
 
-                String judul = edtTitle.getText().toString();
-                String lokasi = edtLokasi.getText().toString();
-                String waktu_mulai = dateView.getText().toString()+" "+ displayCurrentTime.getText().toString().replace(" ","");
-                String waktu_selesai = dateView1.getText().toString()+" " +displayCurrentTime1.getText().toString().replace(" ","");
+                    String judul = edtTitle.getText().toString();
+                    String lokasi = edtLokasi.getText().toString();
+                    String waktu_mulai = dateView.getText().toString() + " " + displayCurrentTime.getText().toString().replace(" ", "");
+                    String waktu_selesai = dateView1.getText().toString() + " " + displayCurrentTime1.getText().toString().replace(" ", "");
 
-                ((Button) arg0).getText().toString();
 
-                System.out.println(waktu_mulai+" "+waktu_selesai);
 
-                sqLiteHelper.tambah_biodata(judul, lokasi, waktu_mulai, waktu_selesai);
                         /* restart acrtivity */
+                }
+
                 finish();
 
                 Intent tambahagenda = new Intent(TambahAgenda.this,MainActivity.class);
                 startActivity(tambahagenda);
+
 
             }
         });
@@ -175,11 +179,11 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Education");
-        categories.add("Work");
-        categories.add("Education");
-        categories.add("Personal");
-        categories.add("Travel");
+        categories.add("Akademik");
+        categories.add("Keluarga");
+        categories.add("Kerja");
+        categories.add("Liburan");
+        categories.add("Pribadi");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -311,7 +315,9 @@ public class TambahAgenda extends AppCompatActivity implements AdapterView.OnIte
         String item = parent.getItemAtPosition(position).toString();
 
         // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+        Kategori = item;
+
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub

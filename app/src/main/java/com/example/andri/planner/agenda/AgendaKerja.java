@@ -1,72 +1,45 @@
 package com.example.andri.planner.agenda;
 
+import android.content.ContentValues;
+
 /**
- * Created by andri on 20/12/17.
+ * Created by andri on 27/12/17.
  */
 
-public class AgendaKerja {
+public class AgendaKerja extends Agenda {
+    private String Ruang;
+    private String level;
 
-    private String judul;
-    private String tanggal;
-    private String jamMulai;
-    private String jamSelesai;
-    private String tempat;
-    private String deskripsi;
-
-    public AgendaKerja(String judul, String tempat, String jamMulai, String jamSelesai) {
-        this.judul = judul;
-        this.jamMulai = jamMulai;
-        this.jamSelesai = jamSelesai;
-        this.tempat = tempat;
+    public AgendaKerja(String id, String judul, String tempat, String jamMulai, String jamSelesai, String deskripsi, String kategori, String Ruang,String level) {
+        super(id, judul, tempat, jamMulai, jamSelesai, deskripsi, kategori);
+        this.setRuang(Ruang);
+        this.setLevel(level);
     }
 
-    public  String getJudul() {
-        return judul;
+
+    public String getRuang() {
+        return Ruang;
     }
 
-    public void setJudul(String judul) {
-        this.judul = judul;
+    public void setRuang(String ruang) {
+        Ruang = ruang;
     }
 
-    public String getTanggal() {
-        return tanggal;
+    public String getLevel() {
+        return level;
     }
 
-    public void setTanggal(String tanggal) {
-        this.tanggal = tanggal;
+    public void setLevel(String level) {
+        this.level = level;
     }
 
-    public String getJamMulai() {
-        return jamMulai;
+    @Override
+    public void reminder() {
+
     }
 
-    public void setJamMulai(String jamMulai) {
-        this.jamMulai = jamMulai;
-    }
-
-    public String getJamSelesai() {
-        return jamSelesai;
-    }
-
-    public void setJamSelesai(String jamSelesai) {
-        this.jamSelesai = jamSelesai;
-    }
-
-    public String getTempat() {
-        return tempat;
-    }
-
-    public void setTempat(String tempat) {
-        this.tempat = tempat;
-    }
-
-    public String getDeskripsi() {
-        return deskripsi;
-    }
-
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
+    @Override
+    public ContentValues tambah_biodata(String judul, String lokasi, String Waktu_mulai, String Waktu_selesai) {
+        return null;
     }
 }
-
-

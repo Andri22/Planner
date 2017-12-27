@@ -28,6 +28,8 @@
 
         <receiver android:name="com.example.andri.planner.NotificationPublisher" />
 
+        <activity android:name="com.example.andri.planner.UpdateAgenda" />
+
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />

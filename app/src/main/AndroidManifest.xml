@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TambahAgenda"></activity>
+        <activity android:name=".TambahAgenda" />
+
         <receiver android:name=".NotificationPublisher" />
+
+        <activity android:name=".UpdateAgenda"></activity>
     </application>
 
 </manifest>
